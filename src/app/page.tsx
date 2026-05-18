@@ -15,7 +15,7 @@ export default function HomePage() {
               <h1 className={styles.heroHeadline}>命理를 밝히다</h1>
               <p className={styles.heroSub}>
                 생년월일시를 입력하면 사주로 풀어낸<br />
-                미래 배우자의 팔자와 인연 운세를 알려드립니다.
+                미래 배우자와 인연 운세를 알려드립니다.
               </p>
             </div>
           </div>
