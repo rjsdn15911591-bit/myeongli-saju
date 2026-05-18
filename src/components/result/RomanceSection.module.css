@@ -1,0 +1,314 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xl);
+}
+
+/* 배지 행 */
+.badgeRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 14px;
+  border-radius: var(--r-pill);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.badgeOutline {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-muted-80);
+  border: 1px solid var(--hairline);
+  background: var(--canvas-white);
+}
+
+/* 메인 비주얼 */
+.visualRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xxl);
+  background: var(--canvas-white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--sp-xl);
+}
+
+.chartWrap {
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.scoreList {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-sm);
+  min-width: 160px;
+}
+
+.scoreRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.scoreLabel {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-muted-80);
+  width: 52px;
+  flex-shrink: 0;
+}
+
+.barTrack {
+  flex: 1;
+  height: 7px;
+  background: rgba(0,0,0,0.07);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+}
+
+.barFill {
+  height: 100%;
+  border-radius: var(--r-pill);
+  transition: width 0.6s ease;
+}
+
+.scoreNum {
+  font-size: 14px;
+  font-weight: 700;
+  width: 30px;
+  text-align: right;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 테토/에겐 카드 */
+.tetoCard {
+  background: var(--canvas-white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--sp-lg) var(--sp-xl);
+}
+
+.tetoCardHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+}
+
+.tetoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--r-lg);
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  flex-shrink: 0;
+  letter-spacing: 0.2px;
+}
+
+.tetoTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.tetoSub {
+  font-size: 13px;
+  color: var(--ink-muted-48);
+  line-height: 1.5;
+}
+
+/* 특이사항 */
+.specialCard {
+  background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 20%, transparent);
+  border-radius: var(--r-lg);
+  padding: var(--sp-xl);
+}
+
+.specialTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-bottom: var(--sp-sm);
+  letter-spacing: 0.2px;
+}
+
+.specialBody {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-muted-80);
+}
+
+/* 아코디언 */
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  background: var(--canvas-white);
+}
+
+.accordionItem {
+  border-top: 1px solid var(--hairline);
+}
+
+.accordionItem:first-child {
+  border-top: none;
+}
+
+.accordionHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  padding: var(--sp-md) var(--sp-xl);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.12s;
+}
+
+.accordionHead:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.accordionLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  flex: 1;
+}
+
+.accordionScore {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.accordionChevron {
+  font-size: 9px;
+  color: var(--ink-muted-48);
+  width: 16px;
+  text-align: center;
+}
+
+.accordionBody {
+  padding: 0 var(--sp-xl) var(--sp-lg);
+}
+
+.accordionBody p {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--ink-muted-80);
+}
+
+/* CTA 박스 */
+.ctaBox {
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--color-primary) 12%, transparent),
+    color-mix(in srgb, var(--color-primary) 6%, transparent));
+  border: 2px solid color-mix(in srgb, var(--color-primary) 35%, transparent);
+  border-radius: var(--r-lg);
+  padding: var(--sp-xxl) var(--sp-xl);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+
+.ctaEmoji {
+  font-size: 32px;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.ctaTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.2px;
+}
+
+.ctaBody {
+  font-size: 14px;
+  color: var(--ink-muted-80);
+  line-height: 1.7;
+  max-width: 380px;
+}
+
+.ctaArrow {
+  margin-top: var(--sp-sm);
+  display: inline-block;
+  padding: 10px 28px;
+  background: var(--color-primary);
+  color: #fff;
+  border-radius: var(--r-pill);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+/* 면책 */
+.disclaimer {
+  font-size: 12px;
+  color: var(--ink-muted-48);
+  line-height: 1.6;
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--hairline);
+}
+
+/* 반응형 */
+@media (max-width: 620px) {
+  .visualRow {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--sp-xl);
+  }
+
+  .chartWrap {
+    width: 100%;
+    max-width: 220px;
+    margin: 0 auto;
+  }
+
+  .scoreLabel {
+    width: 48px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 400px) {
+  .ctaTitle { font-size: 16px; }
+  .accordionHead { padding: var(--sp-md) var(--sp-lg); }
+  .accordionBody { padding: 0 var(--sp-lg) var(--sp-lg); }
+}

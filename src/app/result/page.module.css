@@ -1,0 +1,162 @@
+.loading {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sp-xl);
+  color: var(--ink-muted-80);
+  font-size: 18px;
+}
+.errorText { color: #c0392b; }
+
+/* 서브 내비 */
+.subNav {
+  position: sticky;
+  top: 44px;
+  z-index: 90;
+  background: rgba(245, 244, 240, 0.85);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  height: 52px;
+  border-bottom: 1px solid var(--hairline);
+}
+.subNavInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp-xl);
+  gap: var(--sp-lg);
+}
+.subNavLeft { flex: 1; }
+.subNavRight { flex: 1; display: flex; justify-content: flex-end; }
+.dayGanLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: 14px;
+  color: var(--ink-muted-80);
+}
+
+.subNavLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-lg);
+}
+.navLink {
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-muted-48);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.navLink:hover { color: var(--ink); }
+.navLinkActive { color: var(--color-primary) !important; font-weight: 500; }
+
+/* 섹션 공통 */
+.section { padding: var(--sp-section) 0; }
+.sectionHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-xxl);
+}
+.sectionHanja {
+  font-family: var(--font-primary);
+  font-size: 48px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--color-primary);
+  opacity: 0.5;
+  flex-shrink: 0;
+  padding-top: 4px;
+}
+.sectionHanja.dark { color: var(--color-primary-on-dark); }
+.sectionTitleGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.sectionTitle {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.sectionTitle.dark { color: var(--on-dark); }
+.sectionSub {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-muted-48);
+  letter-spacing: -0.1px;
+  line-height: 1.5;
+}
+.sectionSub.dark { color: var(--on-dark-muted); opacity: 0.65; }
+
+.birthInfo {
+  font-size: 15px;
+  color: var(--ink-muted-48);
+  margin-bottom: var(--sp-xl);
+  letter-spacing: -0.1px;
+}
+
+/* 대운 상세 */
+.daeunDetail {
+  margin-top: var(--sp-xl);
+  padding: var(--sp-xl);
+  background: var(--canvas-white);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--r-lg);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  position: relative;
+}
+.daeunDetail::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: var(--sp-xl);
+  width: 48px;
+  height: 3px;
+  background: var(--color-primary);
+  border-radius: 0 0 var(--r-sm) var(--r-sm);
+}
+.daeunDetailTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: var(--sp-md);
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+.daeunDetailTitle::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+.daeunDetailText {
+  font-size: 15px;
+  line-height: 1.8;
+  color: var(--ink-muted-80);
+}
+
+@media (max-width: 768px) {
+  .subNavLinks { gap: var(--sp-md); }
+  .subNavLeft, .subNavRight { display: none; }
+  .navLink { font-size: 13px; }
+}
+@media (max-width: 480px) {
+  .subNavLinks { gap: var(--sp-sm); }
+}

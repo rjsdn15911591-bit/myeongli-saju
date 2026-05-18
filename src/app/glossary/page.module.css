@@ -1,0 +1,12 @@
+.hero { padding: var(--sp-section) 0; }
+.title { font-size: clamp(28px, 4vw, 42px); font-weight: 500; letter-spacing: -0.3px; color: var(--ink); margin-bottom: var(--sp-lg); }
+.lead { font-size: 20px; font-weight: 300; line-height: 1.6; color: var(--ink-muted-80); }
+.body { padding: var(--sp-section) 0; }
+.list { display: flex; flex-direction: column; gap: var(--sp-md); }
+.item { display: grid; grid-template-columns: 200px 1fr; gap: var(--sp-xl); align-items: start; padding: var(--sp-xl); background: var(--canvas-white); border: 1px solid var(--hairline); border-radius: var(--r-lg); }
+.term { display: flex; align-items: center; gap: var(--sp-md); }
+.termKor { font-size: 18px; font-weight: 500; color: var(--ink); }
+.def { font-size: 15px; line-height: 1.75; color: var(--ink-muted-80); }
+@media (max-width: 640px) {
+  .item { grid-template-columns: 1fr; gap: var(--sp-md); }
+}

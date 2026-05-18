@@ -1,0 +1,142 @@
+/* ─── 폰트 ─── */
+@font-face {
+  font-family: 'WenKaiKR';
+  src: url('/fonts/LXGWWenKaiKR-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'WenKaiKR';
+  src: url('/fonts/LXGWWenKaiKR-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'WenKaiKR';
+  src: url('/fonts/LXGWWenKaiKR-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-display: swap;
+}
+
+/* ─── 리셋 ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { line-height: 1.5; -webkit-font-smoothing: antialiased; }
+img, svg { display: block; max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+a { color: inherit; text-decoration: none; }
+
+/* ─── CSS 토큰 ─── */
+:root {
+  --canvas-white:       #ffffff;
+  --canvas-parchment:   #f5f4f0;
+  --canvas-pearl:       #faf9f6;
+  --tile-dark-1:        #1c1c1e;
+  --tile-dark-2:        #1e1e20;
+  --tile-dark-3:        #191919;
+  --void-black:         #000000;
+
+  --wood-primary:       #2d6a4f;
+  --wood-on-dark:       #52b788;
+  --fire-primary:       #b83c10;
+  --fire-on-dark:       #e07a5f;
+  --earth-primary:      #8b6914;
+  --earth-on-dark:      #d4a853;
+  --metal-primary:      #4a5568;
+  --metal-on-dark:      #a0aec0;
+  --water-primary:      #1a3a5c;
+  --water-on-dark:      #4a90d9;
+
+  --color-primary:          var(--water-primary);
+  --color-primary-on-dark:  var(--water-on-dark);
+  --color-focus:            #2a6fcd;
+
+  --ink:            #1a1a1c;
+  --ink-muted-80:   #3a3a3c;
+  --ink-muted-48:   #808080;
+  --on-dark:        #ffffff;
+  --on-dark-muted:  #c8c8cc;
+
+  --divider-soft:   #f0efeb;
+  --hairline:       #e2e1dc;
+  --chip-glass:     rgba(210, 210, 215, 0.64);
+
+  --font-primary:   'WenKaiKR', 'Noto Serif KR', serif;
+
+  --sp-xxs:     4px;
+  --sp-xs:      8px;
+  --sp-sm:      12px;
+  --sp-md:      16px;
+  --sp-lg:      24px;
+  --sp-xl:      32px;
+  --sp-xxl:     48px;
+  --sp-section: 80px;
+  --sp-hero:    120px;
+
+  --r-none:  0px;
+  --r-sm:    8px;
+  --r-md:    12px;
+  --r-lg:    18px;
+  --r-pill:  9999px;
+  --r-full:  50%;
+
+  --shadow-myeongban: rgba(0, 0, 0, 0.10) 0px 4px 32px 0px;
+}
+
+/* ─── 글로벌 기본 ─── */
+body {
+  font-family: var(--font-primary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: -0.20px;
+  color: var(--ink);
+  background: var(--canvas-white);
+}
+
+/* 접근성 포커스 링 */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* 스크린리더 전용 */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* 타일 섹션 */
+.tile-light    { background: var(--canvas-white);     color: var(--ink); }
+.tile-parchment{ background: var(--canvas-parchment); color: var(--ink); }
+.tile-dark     { background: var(--tile-dark-1);      color: var(--on-dark); }
+
+/* 컨테이너 */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 var(--sp-xl);
+}
+.container-wide {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--sp-xl);
+}
+
+@media (max-width: 640px) {
+  .container, .container-wide { padding: 0 var(--sp-md); }
+}
+
+/* 인쇄 스타일 */
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+}

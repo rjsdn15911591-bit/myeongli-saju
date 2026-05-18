@@ -1,0 +1,125 @@
+/* 히어로 */
+.hero {
+  padding: var(--sp-hero) 0;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+.heroInner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-lg);
+  max-width: 680px;
+}
+.heroWatermark {
+  position: absolute;
+  right: -60px;
+  top: -40px;
+  pointer-events: none;
+  z-index: 0;
+  color: var(--ink);
+}
+.heroText { position: relative; z-index: 1; }
+
+.heroEyebrow {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-primary);
+  letter-spacing: 0.1px;
+  margin-bottom: var(--sp-sm);
+}
+.heroHeadline {
+  font-size: clamp(36px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.30px;
+  color: var(--ink);
+  margin-bottom: var(--sp-lg);
+}
+.heroSub {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.58;
+  color: var(--ink-muted-80);
+}
+
+/* 입력 타일 */
+.inputTile {
+  padding: var(--sp-section) 0;
+}
+.inputHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-xxl);
+  justify-content: center;
+}
+.inputHanja {
+  font-family: var(--font-primary);
+  font-size: 48px;
+  font-weight: 300;
+  color: var(--color-primary);
+  opacity: 0.5;
+  line-height: 1;
+}
+.inputTitle {
+  font-size: 38px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  color: var(--ink);
+}
+
+/* 특징 타일 */
+.featureTile {
+  padding: var(--sp-section) 0;
+}
+.featureTitle {
+  font-size: clamp(24px, 4vw, 38px);
+  font-weight: 500;
+  color: var(--on-dark);
+  letter-spacing: -0.2px;
+  margin-bottom: var(--sp-xxl);
+  text-align: center;
+}
+.featureTitle span {
+  font-weight: 300;
+  opacity: 0.5;
+  margin-right: 8px;
+}
+
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+  padding: var(--sp-xl);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg);
+  transition: border-color 0.2s ease;
+}
+.featureCard:hover { border-color: var(--color-primary-on-dark); }
+.featureCardTitle {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--on-dark);
+  letter-spacing: -0.2px;
+}
+.featureCardDesc {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--on-dark-muted);
+}
+
+@media (max-width: 640px) {
+  .hero { padding: 64px 0; min-height: auto; }
+  .heroSub { font-size: 17px; }
+  .heroSub br { display: none; }
+  .featureGrid { grid-template-columns: 1fr; }
+}

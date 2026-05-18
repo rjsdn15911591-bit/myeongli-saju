@@ -1,0 +1,142 @@
+.wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xxl);
+  overflow: hidden;
+}
+
+.watermark {
+  position: absolute;
+  right: -30px;
+  top: -20px;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  color: var(--ink);
+}
+
+.section {
+  position: relative;
+  z-index: 1;
+  background: var(--canvas-white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--sp-xl);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-lg);
+}
+.hanja {
+  font-family: var(--font-primary);
+  font-size: 42px;
+  font-weight: 300;
+  color: var(--color-primary);
+  line-height: 1;
+  opacity: 0.7;
+}
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.3px;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-xs);
+  margin-bottom: var(--sp-lg);
+}
+.keyword {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 4px 12px;
+  background: var(--canvas-parchment);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  color: var(--ink-muted-80);
+}
+
+.sectionLead {
+  font-size: 13px;
+  color: var(--ink-muted-48);
+  line-height: 1.6;
+  margin-bottom: var(--sp-md);
+  padding: var(--sp-sm) var(--sp-md);
+  background: var(--canvas-parchment);
+  border-radius: var(--r-sm);
+  border-left: 3px solid var(--color-primary);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+.body p {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--ink-muted-80);
+  letter-spacing: -0.2px;
+}
+
+.yongGuide {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-md);
+}
+.yongItem {
+  padding: var(--sp-md);
+  background: var(--canvas-parchment);
+  border-radius: var(--r-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+.giShin { background: #fef5f5; }
+.yongKeyRow {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+}
+.yongKey {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-muted-80);
+}
+.yongKey strong {
+  font-weight: 500;
+  color: var(--ink);
+  margin-left: 4px;
+}
+.yongModernTag {
+  font-size: 11px;
+  color: var(--color-primary);
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  white-space: nowrap;
+}
+.giTag {
+  color: #c0392b;
+  background: rgba(192, 57, 43, 0.08);
+}
+.yongVal {
+  font-size: 14px;
+  color: var(--ink-muted-80);
+  line-height: 1.6;
+}
+
+.disclaimer {
+  font-size: 12px;
+  color: var(--ink-muted-48);
+  line-height: 1.6;
+  padding-top: var(--sp-lg);
+  border-top: 1px solid var(--hairline);
+}

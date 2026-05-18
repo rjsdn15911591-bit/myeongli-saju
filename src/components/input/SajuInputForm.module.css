@@ -1,0 +1,139 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xl);
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.calToggle {
+  display: flex;
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  overflow: hidden;
+  width: fit-content;
+}
+.calBtn {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: 400;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-muted-48);
+  transition: all 0.15s;
+}
+.calBtn.active {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.legend {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted-80);
+  margin-bottom: var(--sp-sm);
+  border: none;
+  padding: 0;
+}
+
+.dateGroup, .genderGroup {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dateRow {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: var(--sp-sm);
+}
+
+.label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-muted-80);
+  margin-bottom: var(--sp-xs);
+}
+
+.input, .select {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  font-family: var(--font-primary);
+  font-size: 16px;
+  color: var(--ink);
+  background: var(--canvas-white);
+  border: 1px solid rgba(0,0,0,0.10);
+  border-radius: var(--r-pill);
+  outline: none;
+  appearance: none;
+  transition: border-color 0.15s;
+}
+.input::placeholder { color: var(--ink-muted-48); font-size: 13px; }
+.input:focus, .select:focus { border-color: var(--color-primary); }
+.inputErr { border-color: #c0392b; }
+
+.select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23808080' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.genderRow {
+  display: flex;
+  gap: var(--sp-sm);
+}
+.genderBtn {
+  flex: 1;
+  height: 48px;
+  font-family: var(--font-primary);
+  font-size: 15px;
+  font-weight: 400;
+  background: var(--canvas-pearl);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  color: var(--ink-muted-80);
+  transition: all 0.15s;
+}
+.genderBtn.active {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: transparent;
+}
+
+.fieldWrap { display: flex; flex-direction: column; }
+.errMsg {
+  font-size: 12px;
+  color: #c0392b;
+  margin-top: 4px;
+  padding-left: 8px;
+}
+.hint {
+  font-size: 12px;
+  color: var(--ink-muted-48);
+  margin-top: 4px;
+  padding-left: 8px;
+}
+
+.leapLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xs);
+  font-size: 14px;
+  color: var(--ink-muted-80);
+  margin-top: var(--sp-sm);
+  cursor: pointer;
+}
+.leapLabel input { cursor: pointer; }
+
+.submitBtn {
+  width: 100%;
+  height: 52px !important;
+  font-size: 16px !important;
+  letter-spacing: -0.2px;
+}

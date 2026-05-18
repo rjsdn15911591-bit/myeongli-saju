@@ -1,0 +1,37 @@
+# dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# build
+dist/
+
+# env
+.env
+.env.local
+.env.*.local
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# debug
+npm-debug.log*
+
+# TypeScript
+tsconfig.tsbuildinfo
+
+# editor
+.vscode/
+.idea/
+
+# Claude Code
+.claude/
+
+# fonts (용량 큰 TTF는 public/fonts/에만 유지, 루트 복사본 제외)
+/*.ttf
+/files/
+/files.zip

@@ -1,0 +1,10 @@
+.hero { padding: var(--sp-section) 0; }
+.title { font-size: clamp(28px, 4vw, 42px); font-weight: 500; letter-spacing: -0.3px; color: var(--ink); margin-bottom: var(--sp-lg); }
+.lead { font-size: 20px; font-weight: 300; line-height: 1.6; color: var(--ink-muted-80); }
+.body { padding: var(--sp-section) 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: var(--sp-xl); margin-bottom: var(--sp-xxl); }
+.item { display: flex; flex-direction: column; gap: var(--sp-md); padding: var(--sp-xl); background: var(--canvas-white); border: 1px solid var(--hairline); border-radius: var(--r-lg); }
+.itemTitle { font-size: 20px; font-weight: 500; color: var(--ink); }
+.itemDesc { font-size: 15px; line-height: 1.65; color: var(--ink-muted-80); }
+.note { display: flex; flex-direction: column; gap: var(--sp-sm); padding: var(--sp-xl); background: var(--canvas-pearl); border-radius: var(--r-lg); border: 1px solid var(--hairline); }
+.note p { font-size: 14px; color: var(--ink-muted-48); line-height: 1.6; }
