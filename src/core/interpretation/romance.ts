@@ -258,6 +258,8 @@ function computeMonthFortunes(
     if (monthGanOhaeng === spouseOhaeng) chance += 8;
     // 월지 = 용신 오행 (+7)
     if (monthJiOhaeng === yongShin.yongShin) chance += 7;
+    // 5월 축제 시즌 인연 보정 (+18)
+    if (calMonth === 5) chance += 18;
 
     chance = Math.min(95, chance);
 
@@ -265,7 +267,11 @@ function computeMonthFortunes(
     let keyword: string;
     let message: string;
 
-    if (YUKHAP[monthJi] === pillars.day.ji) {
+    // 5월 특별 보정: 항상 가장 긍정적인 멘트로 고정
+    if (calMonth === 5) {
+      keyword = '봄 축제 인연의 달';
+      message = `오월(五月)의 기운이 인연의 별성과 맞닿는 특별한 달입니다. 꽃피는 봄 축제의 열기 속에서 운명이 예비한 인연을 직접 만날 가능성이 가장 높은 시기입니다. 새로운 만남 앞에서 주저하지 말고, 용기 있게 한 발 내딛어 보세요.`;
+    } else if (YUKHAP[monthJi] === pillars.day.ji) {
       keyword = '운명적 만남의 달';
       message = `배우자궁(일지 ${pillars.day.ji})과 ${monthJi}가 육합을 이루는 특별한 달입니다. 봄 축제처럼 활기찬 분위기 속에서 운명의 인연과 눈이 마주칠 가능성이 가장 높은 시기입니다. 새로운 만남의 자리를 적극적으로 찾아 나서보세요.`;
     } else if (TIANGANHAP[monthGan] === pillars.day.gan) {
