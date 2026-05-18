@@ -14,8 +14,8 @@ export default function HomePage() {
               <p className={styles.heroEyebrow}>사주로 보는 나의 운명적 인연</p>
               <h1 className={styles.heroHeadline}>命理를 밝히다</h1>
               <p className={styles.heroSub}>
-                생년월일시를 입력하면 사주로 분석한<br />
-                미래 배우자의 스탯과 연애운을 알려드립니다.
+                생년월일시를 입력하면 사주로 풀어낸<br />
+                미래 배우자의 팔자와 인연 운세를 알려드립니다.
               </p>
             </div>
           </div>
@@ -53,7 +53,7 @@ export default function HomePage() {
 }
 
 const FEATURES = [
-  { hanja: '財', title: '배우자 스탯 분석', desc: '재력·능력·다정함·기대수명·유머를 1~100점으로 수치화해 오각 그래프로 시각화합니다.' },
+  { hanja: '財', title: '배우자 역량 풀이', desc: '재력·능력·다정함·기대수명·유머를 1~100점으로 수치화해 오각 그래프로 시각화합니다.' },
   { hanja: '性', title: '테토 / 에겐 판별', desc: '배우자가 주도적·카리스마형(테토)인지, 다정함·배려형(에겐)인지 사주로 분석합니다.' },
   { hanja: '相', title: '배우자 얼굴상', desc: '고양이상·강아지상·여우상·토끼상·호랑이상 중 배우자의 인상 유형을 알려드립니다.' },
   { hanja: '緣', title: '3개월 인연 운세', desc: '앞으로 3개월간 월별 좋은 인연을 만날 확률과 그 달의 연애 키워드를 제공합니다.' },
