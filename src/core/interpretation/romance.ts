@@ -263,29 +263,50 @@ function computeMonthFortunes(
 
     chance = Math.min(95, chance);
 
+    // ── 사주 조건으로 기본 등급 결정 ──
+    // 7단계: 1=인연이 가장 빛나는 달(최상) ~ 7=설레임의 달(기본)
+    // 6은 5월 보정으로만 도달(기타 → 운기 상승)
+    let naturalTier = 7;
+    if (YUKHAP[monthJi] === pillars.day.ji)              naturalTier = 1;
+    else if (TIANGANHAP[monthGan] === pillars.day.gan)   naturalTier = 2;
+    else if (monthJiOhaeng === spouseOhaeng)             naturalTier = 3;
+    else if (GENERATING[monthJiOhaeng] === spouseOhaeng) naturalTier = 4;
+    else if (monthJiOhaeng === yongShin.yongShin)        naturalTier = 5;
+
+    // 5월 보정: 한 단계 상승 (1등급은 유지)
+    const tier = (calMonth === 5 && naturalTier > 1) ? naturalTier - 1 : naturalTier;
+    const mayBoosted = tier !== naturalTier;
+
     // ── 키워드 & 메시지 선택 ──────────────────
     let keyword: string;
     let message: string;
 
-    // 5월 특별 보정: 항상 가장 긍정적인 멘트로 고정
-    if (calMonth === 5) {
+    if (tier === 1) {
+      keyword = '인연이 가장 빛나는 달';
+      message = mayBoosted
+        ? `인연의 기운이 가장 강하게 모이는 특별한 달입니다. 어딘가에서 분명하게 이끌리는 느낌이 든다면 그 감각을 외면하지 마세요. 운명이 예비한 인연과 마주할 가능성이 가장 높은 때입니다.`
+        : `배우자궁(일지 ${pillars.day.ji})과 ${monthJi}가 육합을 이루는 특별한 달입니다. 인연이 가장 빛나는 이 시기, 운명의 만남과 눈이 마주칠 가능성이 가장 높으니 새로운 자리를 적극적으로 찾아 나서보세요.`;
+    } else if (tier === 2) {
       keyword = '운명이 손짓하는 달';
-      message = `오월(五月)의 기운이 인연의 별성과 맞닿는, 인연이 가장 빛나는 특별한 달입니다. 어딘가에서 분명하게 이끌리는 느낌이 든다면 그 감각을 외면하지 마세요. 운명이 예비한 인연과 마주할 가능성이 가장 높은 때입니다.`;
-    } else if (YUKHAP[monthJi] === pillars.day.ji) {
-      keyword = '운명적 만남의 달';
-      message = `배우자궁(일지 ${pillars.day.ji})과 ${monthJi}가 육합을 이루는 특별한 달입니다. 봄 축제처럼 활기찬 분위기 속에서 운명의 인연과 눈이 마주칠 가능성이 가장 높은 시기입니다. 새로운 만남의 자리를 적극적으로 찾아 나서보세요.`;
-    } else if (TIANGANHAP[monthGan] === pillars.day.gan) {
+      message = mayBoosted
+        ? `인연의 기운이 한층 고조되는 달입니다. 낯선 만남 앞에서 이끌리는 감각이 생긴다면 주저하지 마세요. 그 한 걸음이 운명의 분기점이 될 수 있습니다.`
+        : `일간(${pillars.day.gan})과 월간(${monthGan})이 천간합을 이루며 인연의 기운이 활성화됩니다. 운명이 손짓하는 듯한 끌림이 느껴지는 자리라면 망설이지 말고 마음을 열어보세요.`;
+    } else if (tier === 3) {
       keyword = '매력 절정의 달';
-      message = `일간(${pillars.day.gan})과 월간(${monthGan})이 천간합을 이루며 나의 매력이 극대화됩니다. 사람들이 모이는 활기찬 자리에서 특히 빛을 발하는 시기로, ${spouseGender}감이 먼저 다가올 수 있습니다. 이런 자리를 절대 놓치지 마세요.`;
-    } else if (monthJiOhaeng === spouseOhaeng) {
+      message = mayBoosted
+        ? `이달 나의 매력이 자연스럽게 극대화되는 시기입니다. 처음 만나는 자리에서도 좋은 인상을 남기기 쉽고, ${spouseGender}감이 먼저 다가올 수 있습니다. 사람들이 모이는 자리를 놓치지 마세요.`
+        : `배우자 별성(${spouseOhaeng}) 기운이 활성화되며 나의 매력이 극대화되는 달입니다. 처음 만나는 자리에서도 특별한 인상을 남기기 쉬운 시기로, ${spouseGender}감이 먼저 다가올 수 있습니다.`;
+    } else if (tier === 4) {
       keyword = '인연 별성 활성화';
-      message = `배우자 별성(${spouseOhaeng}) 기운이 월지에서 직접 활성화되는 달입니다. 평소와 다른 새로운 공간이나 행사에서 의외의 인연을 만날 수 있으니, 낯선 자리도 두려워 말고 발걸음을 옮겨보세요.`;
-    } else if (GENERATING[monthJiOhaeng] === spouseOhaeng) {
+      message = mayBoosted
+        ? `인연의 기운이 무르익는 달입니다. 평소와 다른 새로운 공간이나 자리에서 의외의 縁을 만날 수 있으니, 낯선 자리도 두려워 말고 발걸음을 옮겨보세요.`
+        : `배우자 별성(${spouseOhaeng}) 기운이 월지에서 서서히 깨어나는 달입니다. 예상치 못한 장소에서 인연의 실마리가 생길 수 있으니, 평소보다 조금 더 마음을 열어두세요.`;
+    } else if (tier === 5) {
       keyword = '인연이 자라는 달';
       message = `인연의 씨앗을 키워주는 기운이 흐르는 달입니다. 한 번 용기 내어 도전한 만남이 뜻밖의 縁으로 이어질 수 있는 시기입니다. 사주가 암시하는 그 인연, 어쩌면 이미 당신 가까운 곳에서 기다리고 있을지도 모릅니다.`;
-    } else if (monthJiOhaeng === yongShin.yongShin) {
+    } else if (tier === 6) {
       keyword = '운기 상승의 달';
-      message = `나의 용신 기운이 강해지는 달로, 전반적인 운기가 상승합니다. 축제나 이벤트 같은 활기찬 자리에서 자신감 있고 밝은 모습이 자연스럽게 드러나며, 그 매력에 이끌려 인연이 찾아올 수 있는 시기입니다.`;
+      message = `전반적인 운기가 한층 상승하는 달입니다. 밝고 자신감 있는 모습이 자연스럽게 드러나며, 활기찬 자리에서 그 매력에 이끌려 인연이 찾아올 수 있는 시기입니다.`;
     } else {
       keyword = '설레임의 달';
       message = `잔잔하지만 꾸준한 인연의 기운이 흐르는 달입니다. 일상의 작은 용기 하나 — 새로운 모임에 나가거나 낯선 이에게 먼저 말을 건네는 것 — 이 운명의 분기점이 될 수 있습니다. 당신의 인연은 생각보다 가까이 있습니다.`;
