@@ -12,7 +12,7 @@ export default function HomePage() {
             <HanjaGlyph char="命" size="tile" opacity={0.06} className={styles.heroWatermark} />
             <div className={styles.heroText}>
               <p className={styles.heroEyebrow}>사주로 보는 나의 운명적 인연</p>
-              <h1 className={styles.heroHeadline}>내 미래 배우자는?</h1>
+              <h1 className={styles.heroHeadline}>命理를 밝히다</h1>
               <p className={styles.heroSub}>
                 생년월일시를 입력하면 사주로 분석한<br />
                 미래 배우자의 스탯과 연애운을 알려드립니다.
