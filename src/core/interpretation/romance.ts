@@ -1,5 +1,7 @@
-import type { SaJuPillar, YongShin, ShinShin, OHaeng, OHaengDistribution, SpouseStats } from '@/store/types';
-import { CHEONGAN_ATTR, JIJI_ATTR, OVERCOMING } from '@/core/saju/ganji';
+import type { SaJuPillar, YongShin, ShinShin, OHaeng, OHaengDistribution, SpouseStats, MonthFortune, GanJi } from '@/store/types';
+import { CHEONGAN_ATTR, JIJI_ATTR, OVERCOMING, GENERATING, MONTH_JIJI } from '@/core/saju/ganji';
+import { getSajuYearAndMonthIndex } from '@/core/calendar/julgi';
+import { getYearGan, getMonthGan } from '@/core/saju/pillar';
 
 // What ohaeng X is overcome by (inverse of OVERCOMING)
 const OVERCOME_BY: Record<OHaeng, OHaeng> = {
@@ -195,5 +197,115 @@ export function computeSpouseStats(
     lifespanText: LIFESPAN_TEXTS[spouseOhaeng],
     humorText: HUMOR_TEXTS[spouseOhaeng],
     specialChars,
+    ...computeMonthFortunes(pillars, spouseOhaeng, yongShin, gender),
   };
+}
+
+// ── 앞으로 3개월 인연 월운 계산 ──────────────────────────────────────
+
+// 육합 쌍
+const YUKHAP: Record<string, string> = {
+  '子': '丑', '丑': '子', '寅': '亥', '亥': '寅',
+  '卯': '戌', '戌': '卯', '辰': '酉', '酉': '辰',
+  '巳': '申', '申': '巳', '午': '未', '未': '午',
+};
+// 천간합 쌍
+const TIANGANHAP: Record<string, string> = {
+  '甲': '己', '己': '甲', '乙': '庚', '庚': '乙',
+  '丙': '辛', '辛': '丙', '丁': '壬', '壬': '丁',
+  '戊': '癸', '癸': '戊',
+};
+
+function computeMonthFortunes(
+  pillars: SaJuPillar,
+  spouseOhaeng: OHaeng,
+  yongShin: YongShin,
+  gender: '남' | '여'
+): { monthFortune: MonthFortune[]; overallFortune: string } {
+  const today = new Date();
+  const months: MonthFortune[] = [];
+  const spouseGender = gender === '남' ? '여자친구' : '남자친구';
+
+  for (let offset = 0; offset < 3; offset++) {
+    // 해당 월의 중간 날짜(15일)로 월운 계산
+    const d = new Date(today.getFullYear(), today.getMonth() + offset, 15, 12, 0);
+    const { sajuYear, monthJijiIndex } = getSajuYearAndMonthIndex(
+      d.getFullYear(), d.getMonth() + 1, d.getDate(), 12, 0
+    );
+    const yearGan = getYearGan(sajuYear);
+    const monthJi = MONTH_JIJI[monthJijiIndex];
+    const monthGan = getMonthGan(yearGan, monthJijiIndex);
+    const ganJi: GanJi = { gan: monthGan, ji: monthJi };
+
+    const calMonth = d.getMonth() + 1;
+    const calYear = d.getFullYear();
+    const label = `${calYear}.${String(calMonth).padStart(2, '0')} (${monthGan}${monthJi}月)`;
+
+    // ── 확률 계산 ─────────────────────────────
+    let chance = 62;
+    const monthJiOhaeng = JIJI_ATTR[monthJi].ohaeng;
+    const monthGanOhaeng = CHEONGAN_ATTR[monthGan].ohaeng;
+
+    // 일지 육합 (+20): 가장 직접적인 배우자궁 인연
+    if (YUKHAP[monthJi] === pillars.day.ji) chance += 20;
+    // 일간 천간합 (+15)
+    if (TIANGANHAP[monthGan] === pillars.day.gan) chance += 15;
+    // 월지 오행 = 배우자 별성 (+18)
+    if (monthJiOhaeng === spouseOhaeng) chance += 18;
+    // 월지 오행 → 배우자 별성 생(生) (+10)
+    if (GENERATING[monthJiOhaeng] === spouseOhaeng) chance += 10;
+    // 월간 오행 = 배우자 별성 (+8)
+    if (monthGanOhaeng === spouseOhaeng) chance += 8;
+    // 월지 = 용신 오행 (+7)
+    if (monthJiOhaeng === yongShin.yongShin) chance += 7;
+
+    chance = Math.min(95, chance);
+
+    // ── 키워드 & 메시지 선택 ──────────────────
+    let keyword: string;
+    let message: string;
+
+    if (YUKHAP[monthJi] === pillars.day.ji) {
+      keyword = '운명적 만남의 달';
+      message = `배우자궁(일지 ${pillars.day.ji})과 ${monthJi}가 육합을 이루는 특별한 달입니다. 운명적인 인연이 실제로 찾아올 가능성이 가장 높은 시기이니, 새로운 만남의 자리를 적극적으로 만들어보세요.`;
+    } else if (TIANGANHAP[monthGan] === pillars.day.gan) {
+      keyword = '매력 절정의 달';
+      message = `일간(${pillars.day.gan})과 월간(${monthGan})이 천간합을 이루며 나의 매력이 극대화됩니다. 어디서든 좋은 인상을 남기기 쉽고, ${spouseGender}감이 먼저 다가올 수 있는 달입니다.`;
+    } else if (monthJiOhaeng === spouseOhaeng) {
+      keyword = '인연 별성 활성화';
+      message = `배우자 별성(${spouseOhaeng}) 기운이 월지에서 직접 활성화되는 달입니다. 소개팅이나 모임에서 특별한 첫인상을 남길 수 있으며, 예상치 못한 곳에서 좋은 인연이 찾아올 수 있습니다.`;
+    } else if (GENERATING[monthJiOhaeng] === spouseOhaeng) {
+      keyword = '인연이 자라는 달';
+      message = `인연의 씨앗을 키워주는 기운이 흐르는 달입니다. 이미 알고 있는 사람과의 관계가 더욱 깊어질 수 있고, 새로운 만남이 싹틀 수 있는 좋은 시기입니다. 마음을 열고 주변을 살펴보세요.`;
+    } else if (monthJiOhaeng === yongShin.yongShin) {
+      keyword = '운기 상승의 달';
+      message = `나의 용신 기운이 강해지는 달로, 전반적인 운기가 상승합니다. 밝고 자신감 있는 모습이 자연스럽게 드러나며, 주변 사람들에게 매력적인 인상을 줄 수 있는 시기입니다.`;
+    } else {
+      keyword = '설레임의 달';
+      message = `잔잔하지만 꾸준한 인연의 기운이 흐르는 달입니다. 일상 속에서 소소한 만남과 인연이 쌓이다 보면 어느 순간 특별한 縁으로 이어질 수 있습니다. 열린 마음으로 새로운 사람과의 만남을 즐겨보세요.`;
+    }
+
+    months.push({ label, ganJi, meetingChance: chance, keyword, message });
+  }
+
+  // ── 전체 요약 메시지 ──────────────────────────
+  const best = months.reduce((a, b) => a.meetingChance > b.meetingChance ? a : b);
+  const avg = Math.round(months.reduce((a, b) => a + b.meetingChance, 0) / 3);
+
+  const OHAENG_ENERGY: Record<OHaeng, string> = {
+    '木': '성장과 새로운 시작의',
+    '火': '열정과 설렘이 가득한',
+    '土': '안정적이고 깊이 있는',
+    '金': '분명하고 결실을 맺는',
+    '水': '흘러들듯 자연스러운',
+  };
+
+  const overallFortune =
+    `향후 3개월은 ${OHAENG_ENERGY[spouseOhaeng]} 인연의 기운이 꾸준히 이어집니다. ` +
+    `평균 ${avg}%의 인연 확률로 이 시기 전반에 걸쳐 좋은 만남의 가능성이 열려있습니다. ` +
+    `특히 ${best.label.split('(')[0].trim()}에 가장 강한 인연의 기운이 모이니, ` +
+    `이 시기를 중심으로 새로운 사람과의 만남을 적극적으로 만들어보세요. ` +
+    `사주가 암시하는 그 인연이 이미 당신 주변 어딘가에서 기다리고 있을지도 모릅니다.`;
+
+  return { monthFortune: months, overallFortune };
 }

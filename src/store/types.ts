@@ -65,6 +65,14 @@ export interface ShinShinMap {
   [key: string]: ShinShin;
 }
 
+export interface MonthFortune {
+  label: string;          // "5월 (癸巳月)"
+  ganJi: GanJi;
+  meetingChance: number;  // 50–95
+  keyword: string;
+  message: string;
+}
+
 export interface SpouseStats {
   wealth: number;
   ability: number;
@@ -80,6 +88,8 @@ export interface SpouseStats {
   lifespanText: string;
   humorText: string;
   specialChars: string;
+  monthFortune: MonthFortune[];
+  overallFortune: string;
 }
 
 export interface SajuResult {

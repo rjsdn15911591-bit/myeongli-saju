@@ -199,6 +199,47 @@ export default function RomanceSection({ result }: Props) {
         })}
       </div>
 
+      {/* 앞으로 3개월 인연 운세 */}
+      <div className={styles.monthSection}>
+        <p className={styles.monthTitle}>앞으로 3개월 인연 운세</p>
+        <div className={styles.monthGrid}>
+          {spouseStats.monthFortune.map((mf, i) => {
+            const R = 28;
+            const circ = parseFloat((2 * Math.PI * R).toFixed(2));
+            const dash = parseFloat(((mf.meetingChance / 100) * circ).toFixed(2));
+            return (
+              <div key={i} className={styles.monthCard}>
+                <p className={styles.monthLabel}>{mf.label}</p>
+                <div className={styles.gaugeWrap}>
+                  <svg viewBox="0 0 70 70" className={styles.gaugeSvg} aria-hidden="true">
+                    <circle cx="35" cy="35" r={R}
+                      fill="none" stroke="rgba(0,0,0,0.08)" strokeWidth="6" />
+                    <circle cx="35" cy="35" r={R}
+                      fill="none"
+                      stroke="var(--color-primary)"
+                      strokeWidth="6"
+                      strokeLinecap="round"
+                      strokeDasharray={`${dash} ${circ}`}
+                      transform="rotate(-90 35 35)" />
+                    <text x="35" y="35"
+                      textAnchor="middle" dominantBaseline="central"
+                      fontSize="14" fontWeight="700"
+                      fill="var(--ink, #111)">
+                      {mf.meetingChance}%
+                    </text>
+                  </svg>
+                </div>
+                <span className={styles.monthKeyword}>{mf.keyword}</span>
+                <p className={styles.monthMessage}>{mf.message}</p>
+              </div>
+            );
+          })}
+        </div>
+        <div className={styles.overallFortune}>
+          <p>{spouseStats.overallFortune}</p>
+        </div>
+      </div>
+
       {/* CTA — 소개팅 부스 */}
       <div className={styles.ctaBox}>
         <p className={styles.ctaEmoji}>💫</p>
