@@ -267,22 +267,22 @@ function computeMonthFortunes(
 
     if (YUKHAP[monthJi] === pillars.day.ji) {
       keyword = '운명적 만남의 달';
-      message = `배우자궁(일지 ${pillars.day.ji})과 ${monthJi}가 육합을 이루는 특별한 달입니다. 운명적인 인연이 실제로 찾아올 가능성이 가장 높은 시기이니, 새로운 만남의 자리를 적극적으로 만들어보세요.`;
+      message = `배우자궁(일지 ${pillars.day.ji})과 ${monthJi}가 육합을 이루는 특별한 달입니다. 봄 축제처럼 활기찬 분위기 속에서 운명의 인연과 눈이 마주칠 가능성이 가장 높은 시기입니다. 새로운 만남의 자리를 적극적으로 찾아 나서보세요.`;
     } else if (TIANGANHAP[monthGan] === pillars.day.gan) {
       keyword = '매력 절정의 달';
-      message = `일간(${pillars.day.gan})과 월간(${monthGan})이 천간합을 이루며 나의 매력이 극대화됩니다. 어디서든 좋은 인상을 남기기 쉽고, ${spouseGender}감이 먼저 다가올 수 있는 달입니다.`;
+      message = `일간(${pillars.day.gan})과 월간(${monthGan})이 천간합을 이루며 나의 매력이 극대화됩니다. 사람들이 모이는 활기찬 자리에서 특히 빛을 발하는 시기로, ${spouseGender}감이 먼저 다가올 수 있습니다. 이런 자리를 절대 놓치지 마세요.`;
     } else if (monthJiOhaeng === spouseOhaeng) {
       keyword = '인연 별성 활성화';
-      message = `배우자 별성(${spouseOhaeng}) 기운이 월지에서 직접 활성화되는 달입니다. 소개팅이나 모임에서 특별한 첫인상을 남길 수 있으며, 예상치 못한 곳에서 좋은 인연이 찾아올 수 있습니다.`;
+      message = `배우자 별성(${spouseOhaeng}) 기운이 월지에서 직접 활성화되는 달입니다. 평소와 다른 새로운 공간이나 행사에서 의외의 인연을 만날 수 있으니, 낯선 자리도 두려워 말고 발걸음을 옮겨보세요.`;
     } else if (GENERATING[monthJiOhaeng] === spouseOhaeng) {
       keyword = '인연이 자라는 달';
-      message = `인연의 씨앗을 키워주는 기운이 흐르는 달입니다. 이미 알고 있는 사람과의 관계가 더욱 깊어질 수 있고, 새로운 만남이 싹틀 수 있는 좋은 시기입니다. 마음을 열고 주변을 살펴보세요.`;
+      message = `인연의 씨앗을 키워주는 기운이 흐르는 달입니다. 한 번 용기 내어 도전한 만남이 뜻밖의 縁으로 이어질 수 있는 시기입니다. 사주가 암시하는 그 인연, 어쩌면 이미 당신 가까운 곳에서 기다리고 있을지도 모릅니다.`;
     } else if (monthJiOhaeng === yongShin.yongShin) {
       keyword = '운기 상승의 달';
-      message = `나의 용신 기운이 강해지는 달로, 전반적인 운기가 상승합니다. 밝고 자신감 있는 모습이 자연스럽게 드러나며, 주변 사람들에게 매력적인 인상을 줄 수 있는 시기입니다.`;
+      message = `나의 용신 기운이 강해지는 달로, 전반적인 운기가 상승합니다. 축제나 이벤트 같은 활기찬 자리에서 자신감 있고 밝은 모습이 자연스럽게 드러나며, 그 매력에 이끌려 인연이 찾아올 수 있는 시기입니다.`;
     } else {
       keyword = '설레임의 달';
-      message = `잔잔하지만 꾸준한 인연의 기운이 흐르는 달입니다. 일상 속에서 소소한 만남과 인연이 쌓이다 보면 어느 순간 특별한 縁으로 이어질 수 있습니다. 열린 마음으로 새로운 사람과의 만남을 즐겨보세요.`;
+      message = `잔잔하지만 꾸준한 인연의 기운이 흐르는 달입니다. 일상의 작은 용기 하나 — 새로운 모임에 나가거나 낯선 이에게 먼저 말을 건네는 것 — 이 운명의 분기점이 될 수 있습니다. 당신의 인연은 생각보다 가까이 있습니다.`;
     }
 
     months.push({ label, ganJi, meetingChance: chance, keyword, message });
@@ -302,10 +302,9 @@ function computeMonthFortunes(
 
   const overallFortune =
     `향후 3개월은 ${OHAENG_ENERGY[spouseOhaeng]} 인연의 기운이 꾸준히 이어집니다. ` +
-    `평균 ${avg}%의 인연 확률로 이 시기 전반에 걸쳐 좋은 만남의 가능성이 열려있습니다. ` +
-    `특히 ${best.label.split('(')[0].trim()}에 가장 강한 인연의 기운이 모이니, ` +
-    `이 시기를 중심으로 새로운 사람과의 만남을 적극적으로 만들어보세요. ` +
-    `사주가 암시하는 그 인연이 이미 당신 주변 어딘가에서 기다리고 있을지도 모릅니다.`;
+    `평균 ${avg}%의 인연 확률로 이 시기 전반에 걸쳐 좋은 만남의 가능성이 열려 있습니다. ` +
+    `특히 ${best.label.split('(')[0].trim()}에 가장 강한 인연의 기운이 모이니, 이 시기를 놓치지 마세요. ` +
+    `사주가 암시하는 그 인연 — 어쩌면 지금 이 순간 당신 바로 옆에서 기다리고 있을지도 모릅니다.`;
 
   return { monthFortune: months, overallFortune };
 }
