@@ -11,11 +11,11 @@ export default function HomePage() {
           <div className={styles.heroInner}>
             <HanjaGlyph char="命" size="tile" opacity={0.06} className={styles.heroWatermark} />
             <div className={styles.heroText}>
-              <p className={styles.heroEyebrow}>전통 명리학 기반</p>
-              <h1 className={styles.heroHeadline}>命理를 밝히다</h1>
+              <p className={styles.heroEyebrow}>사주로 보는 나의 운명적 인연</p>
+              <h1 className={styles.heroHeadline}>내 미래 배우자는?</h1>
               <p className={styles.heroSub}>
-                생년월일시를 입력하면 사주팔자·오행·대운까지<br />
-                정밀 명리 분석을 제공합니다.
+                생년월일시를 입력하면 사주로 분석한<br />
+                미래 배우자의 스탯과 연애운을 알려드립니다.
               </p>
             </div>
           </div>
@@ -36,7 +36,7 @@ export default function HomePage() {
       {/* 특징 소개 타일 */}
       <section className={`tile-dark ${styles.featureTile}`}>
         <div className="container-wide">
-          <h2 className={styles.featureTitle}><span aria-hidden="true">五行 </span>무엇을 분석하나요</h2>
+          <h2 className={styles.featureTitle}><span aria-hidden="true">緣 </span>무엇을 알려드리나요</h2>
           <div className={styles.featureGrid}>
             {FEATURES.map((f, i) => (
               <div key={i} className={styles.featureCard}>
@@ -53,10 +53,10 @@ export default function HomePage() {
 }
 
 const FEATURES = [
-  { hanja: '命', title: '사주팔자 산출', desc: '만세력 기반 연·월·일·시주 4주 8자를 정밀하게 산출합니다. 절입 시각을 반영합니다.' },
-  { hanja: '五', title: '오행 분석', desc: '木火土金水 오행 분포와 일간의 신강/신약, 용신·희신·기신을 도출합니다.' },
-  { hanja: '大', title: '대운 분석', desc: '순행·역행 판별 후 10년 단위 대운 흐름을 타임라인으로 시각화합니다.' },
-  { hanja: '歲', title: '세운·월운', desc: '현재 태세와 월건을 분석하고 원국과의 상호 관계를 해석합니다.' },
-  { hanja: '性', title: '성격 해석', desc: '일간 오행과 십신 구성을 기반으로 기질·강점·약점을 서술합니다.' },
-  { hanja: '業', title: '직업·재물', desc: '용신 오행을 기준으로 적성 직업군과 재물 운 방향을 안내합니다.' },
+  { hanja: '財', title: '배우자 스탯 분석', desc: '재력·능력·다정함·기대수명·유머를 1~100점으로 수치화해 오각 그래프로 시각화합니다.' },
+  { hanja: '性', title: '테토 / 에겐 판별', desc: '배우자가 주도적·카리스마형(테토)인지, 다정함·배려형(에겐)인지 사주로 분석합니다.' },
+  { hanja: '相', title: '배우자 얼굴상', desc: '고양이상·강아지상·여우상·토끼상·호랑이상 중 배우자의 인상 유형을 알려드립니다.' },
+  { hanja: '緣', title: '3개월 인연 운세', desc: '앞으로 3개월간 월별 좋은 인연을 만날 확률과 그 달의 연애 키워드를 제공합니다.' },
+  { hanja: '星', title: '배우자 별성', desc: '관성·재성 등 사주 배우자 별성을 분석해 인연의 오행적 특성을 풀이합니다.' },
+  { hanja: '合', title: '소개팅 부스 연결', desc: '사주가 암시한 그 인연, 지금 바로 소개팅 부스에서 만날 수 있을지도 모릅니다.' },
 ];
