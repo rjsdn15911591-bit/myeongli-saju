@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useState } from 'react';
 import type { SajuResult, SpouseStats } from '@/store/types';
 import styles from './RomanceSection.module.css';
@@ -247,9 +248,9 @@ export default function RomanceSection({ result }: Props) {
         <p className={styles.ctaBody}>
           사주가 암시한 그 인연 — 지금 이 자리 소개팅 부스에서 기다리고 있을지도 몰라요.
         </p>
-        <div className={styles.ctaArrow}>
+        <Link href="/booth" className={styles.ctaArrow}>
           → 지금 바로 소개팅 부스로 Go!
-        </div>
+        </Link>
       </div>
 
       <p className={styles.disclaimer}>
