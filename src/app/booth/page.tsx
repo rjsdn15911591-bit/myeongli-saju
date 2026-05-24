@@ -38,7 +38,7 @@ export default function BoothPage() {
             </div>
             <div className={styles.locationMeta}>
               <span className={styles.locationTag}>학생 부스 구역</span>
-              <span className={styles.locationTag}>넓넓한 터</span>
+              <span className={styles.locationTag}>넉넉한 터</span>
               <span className={styles.locationTag}>피우리오 2026</span>
             </div>
             <button
