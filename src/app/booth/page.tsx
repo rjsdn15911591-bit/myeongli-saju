@@ -47,7 +47,7 @@ export default function BoothPage() {
               aria-label="배치도 전체화면으로 보기"
             >
               <img
-                src="/booth-map.jpg"
+                src="/booth-map.png"
                 alt="피우리오 전체 부스 배치도 — 22번 위치"
                 className={styles.mapImage}
                 onError={(e) => {
@@ -97,7 +97,7 @@ export default function BoothPage() {
         >
           <button className={styles.lightboxClose} onClick={() => setLightboxOpen(false)} aria-label="닫기">✕</button>
           <img
-            src="/booth-map.jpg"
+            src="/booth-map.png"
             alt="피우리오 전체 부스 배치도"
             className={styles.lightboxImage}
             onClick={(e) => e.stopPropagation()}
