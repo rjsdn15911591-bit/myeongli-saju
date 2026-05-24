@@ -28,7 +28,7 @@ a { color: inherit; text-decoration: none; }
 
 /* ─── CSS 토큰 ─── */
 :root {
-  --canvas-white:       #ffffff;
+  --canvas-white:       #fafaf8;
   --canvas-parchment:   #f5f4f0;
   --canvas-pearl:       #faf9f6;
   --tile-dark-1:        #1c1c1e;
