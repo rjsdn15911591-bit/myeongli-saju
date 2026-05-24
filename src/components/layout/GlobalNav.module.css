@@ -46,6 +46,8 @@
   transition: color 0.15s;
 }
 .link:hover { color: var(--on-dark); }
+.linkHighlight { color: var(--color-primary-on-dark); font-weight: 500; }
+.linkHighlight:hover { color: #ffffff; }
 
 .hamburger {
   display: none;

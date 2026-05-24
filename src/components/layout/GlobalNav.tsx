@@ -15,6 +15,7 @@ export default function GlobalNav() {
         </Link>
         <div className={`${styles.links} ${open ? styles.open : ''}`}>
           <Link href="/" className={styles.link} onClick={() => setOpen(false)}>사주 보기</Link>
+          <Link href="/booth" className={`${styles.link} ${styles.linkHighlight}`} onClick={() => setOpen(false)}>소개팅 부스</Link>
           <Link href="/about" className={styles.link} onClick={() => setOpen(false)}>소개</Link>
           <Link href="/glossary" className={styles.link} onClick={() => setOpen(false)}>용어 사전</Link>
         </div>

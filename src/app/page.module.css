@@ -118,9 +118,61 @@
   color: var(--on-dark-muted);
 }
 
+/* 소개팅 부스 CTA 배너 */
+.boothBanner {
+  padding: var(--sp-xxl) 0;
+  border-top: 1px solid var(--hairline);
+}
+.boothBannerInner {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-xl);
+  background: var(--canvas-white);
+  border: 1px solid var(--hairline);
+  border-radius: var(--r-lg);
+  padding: var(--sp-xl);
+  box-shadow: var(--shadow-myeongban);
+}
+.boothBannerText {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-xs);
+}
+.boothBannerTitle {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: -0.2px;
+}
+.boothBannerSub {
+  font-size: 14px;
+  color: var(--ink-muted-80);
+  line-height: 1.6;
+}
+.boothBtn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  background: var(--color-primary);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: var(--r-pill);
+  letter-spacing: -0.1px;
+  transition: opacity 0.15s, transform 0.15s;
+  white-space: nowrap;
+}
+.boothBtn:hover { opacity: 0.88; transform: translateY(-1px); }
+.boothBtn:active { transform: translateY(0); }
+
 @media (max-width: 640px) {
   .hero { padding: 64px 0; min-height: auto; }
   .heroSub { font-size: 17px; }
   .heroSub br { display: none; }
   .featureGrid { grid-template-columns: 1fr; }
+  .boothBannerInner { flex-direction: column; align-items: flex-start; gap: var(--sp-lg); }
+  .boothBtn { width: 100%; text-align: center; }
 }

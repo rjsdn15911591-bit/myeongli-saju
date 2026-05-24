@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import HanjaGlyph from '@/components/common/HanjaGlyph';
 import SajuInputForm from '@/components/input/SajuInputForm';
 import styles from './page.module.css';
@@ -45,6 +46,22 @@ export default function HomePage() {
                 <p className={styles.featureCardDesc}>{f.desc}</p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 소개팅 부스 CTA 배너 */}
+      <section className={`tile-parchment ${styles.boothBanner}`}>
+        <div className="container">
+          <div className={styles.boothBannerInner}>
+            <HanjaGlyph char="緣" style={{ fontSize: '48px', color: 'var(--color-primary)', opacity: 0.4 }} />
+            <div className={styles.boothBannerText}>
+              <h2 className={styles.boothBannerTitle}>사주가 점지한 인연, 직접 만나볼까요?</h2>
+              <p className={styles.boothBannerSub}>지금 행사장 소개팅 부스에서 운명의 상대가 기다리고 있을지도 모릅니다.</p>
+            </div>
+            <Link href="/booth" className={styles.boothBtn}>
+              지금 바로 소개팅 부스로 Go!
+            </Link>
           </div>
         </div>
       </section>
