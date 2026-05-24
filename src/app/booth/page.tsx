@@ -1,3 +1,5 @@
+'use client';
+
 import HanjaGlyph from '@/components/common/HanjaGlyph';
 import styles from './page.module.css';
 
