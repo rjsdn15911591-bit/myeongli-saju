@@ -31,11 +31,15 @@ export default function BoothPage() {
               <span className={styles.boothNumber}>22</span>
               <span className={styles.boothLabel}>번 부스</span>
             </div>
+            <div className={styles.locationMeta}>
+              <span className={styles.locationTag}>학생 부스 구역</span>
+              <span className={styles.locationTag}>넓넓한 터</span>
+              <span className={styles.locationTag}>피우리오 2026</span>
+            </div>
             <div className={styles.mapWrapper}>
-              {/* 부스 배치도 사진 (public/booth-map.jpg 업로드 후 표시) */}
               <img
                 src="/booth-map.jpg"
-                alt="소개팅 부스 배치도 — 22번 위치"
+                alt="피우리오 전체 부스 배치도 — 22번 위치"
                 className={styles.mapImage}
                 onError={(e) => {
                   (e.target as HTMLImageElement).style.display = 'none';
@@ -49,7 +53,7 @@ export default function BoothPage() {
               </div>
             </div>
             <p className={styles.locationNote}>
-              위 배치도에서 <strong>22번</strong> 부스를 찾아오세요!
+              배치도에서 초록색 <strong>학생 부스</strong> 구역 좌측 하단 <strong>22번</strong>을 찾아오세요!
             </p>
           </div>
         </div>
