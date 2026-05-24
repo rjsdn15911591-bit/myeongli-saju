@@ -10,7 +10,7 @@ export default function BoothPage() {
   return (
     <>
       {/* 히어로 */}
-      <section className={`tile-dark ${styles.hero}`}>
+      <section className={`tile-light ${styles.hero}`}>
         <div className="container">
           <div className={styles.heroInner}>
             <HanjaGlyph char="緣" size="tile" opacity={0.06} className={styles.heroWatermark} />
@@ -67,7 +67,7 @@ export default function BoothPage() {
             <div className={styles.locationNote}>
               <p>
                 배치도에서 <strong>초록색 테두리</strong>로 표시된 <strong>학생 부스</strong> 구역을 찾아주세요.<br />
-                그 구역 안 <strong>왼쪽 아래</strong>에 위치한 <strong>22번 부스</strong>가 바로 저희 소개팅 부스입니다.<br />
+                그 구역 안 <strong>왼쪽 아래</strong>에 위치한 <strong>22번 부스</strong>가 바로 저희 소개팅 부스입니다!<br />
                 배치도를 누르면 크게 확인하실 수 있어요.
               </p>
             </div>
