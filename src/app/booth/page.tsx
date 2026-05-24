@@ -1,9 +1,12 @@
 'use client';
 
+import { useState } from 'react';
 import HanjaGlyph from '@/components/common/HanjaGlyph';
 import styles from './page.module.css';
 
 export default function BoothPage() {
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+
   return (
     <>
       {/* 히어로 */}
@@ -38,7 +41,11 @@ export default function BoothPage() {
               <span className={styles.locationTag}>넓넓한 터</span>
               <span className={styles.locationTag}>피우리오 2026</span>
             </div>
-            <div className={styles.mapWrapper}>
+            <button
+              className={styles.mapWrapper}
+              onClick={() => setLightboxOpen(true)}
+              aria-label="배치도 전체화면으로 보기"
+            >
               <img
                 src="/booth-map.jpg"
                 alt="피우리오 전체 부스 배치도 — 22번 위치"
@@ -53,10 +60,17 @@ export default function BoothPage() {
                 <span className={styles.mapPlaceholderIcon}>🗺</span>
                 <p>부스 배치도 준비 중입니다</p>
               </div>
+              <div className={styles.mapZoomHint}>
+                <span>🔍 눌러서 크게 보기</span>
+              </div>
+            </button>
+            <div className={styles.locationNote}>
+              <p>
+                배치도에서 <strong>초록색 테두리</strong>로 표시된 <strong>학생 부스</strong> 구역을 찾아주세요.<br />
+                그 구역 안 <strong>왼쪽 아래</strong>에 위치한 <strong>22번 부스</strong>가 바로 저희 소개팅 부스예요 💛<br />
+                배치도를 누르면 크게 확인하실 수 있어요.
+              </p>
             </div>
-            <p className={styles.locationNote}>
-              배치도에서 초록색 <strong>학생 부스</strong> 구역 좌측 하단 <strong>22번</strong>을 찾아오세요!
-            </p>
           </div>
         </div>
       </section>
@@ -71,6 +85,25 @@ export default function BoothPage() {
           <PhotoGallery />
         </div>
       </section>
+
+      {/* 라이트박스 */}
+      {lightboxOpen && (
+        <div
+          className={styles.lightboxOverlay}
+          onClick={() => setLightboxOpen(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="배치도 전체화면"
+        >
+          <button className={styles.lightboxClose} onClick={() => setLightboxOpen(false)} aria-label="닫기">✕</button>
+          <img
+            src="/booth-map.jpg"
+            alt="피우리오 전체 부스 배치도"
+            className={styles.lightboxImage}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </>
   );
 }
